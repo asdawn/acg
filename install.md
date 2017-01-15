@@ -21,4 +21,9 @@ the default password is raspberry
 fortunately now gdal, postgres, postgis and pgRouting can be installed using apt-get
 sudo apt-get update
 sudo apt-get install postgis
-4.
+
+
+4. change password of postgres (the default account of postgresql)
+sudo su postgres
+ALTER USER postgres WITH PASSWORD 'postgres';
+\q
