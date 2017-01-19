@@ -19,12 +19,17 @@
 >+ A computer
 
 **TIPS**
-<1> Other versions of Raspberry PI are also okay, but for some versions you have to use a SD card instead of a TF card.
-If you do not have one, the newest version is suggested.
+
+<1> Other versions of Raspberry PI are also okay, but for some versions you have to use a SD card instead of a TF card. If you do not have one, the newest version is suggested.
+
 <2> A TF card can be easily converted to SD card with an adapter (very cheap, sometimes as accessory of the card).
+
 <3> Maybe your notebook or tablet has an integrated card reader.
+
 <4> If your monitor do not have an HDMI slot, maybe you  can try your TV, or seek a convertor.
+
 <5> Monitor, mouse and keyboard are required the first time you boot it.
+
 <6> An USB 3.0 slot of your PC or notebook is okay in most cases. However it is not assured. Low power may lead to accidental halt or reboot.   
 
 ### 2.2 Software
@@ -34,12 +39,13 @@ If you do not have one, the newest version is suggested.
 Please read https://www.raspberrypi.org/documentation/installation/installing-images/README.md at the first time.
 
 **WARNING**
+
 Rasbian JESSIE LITE is a command line image. It is much smaller, but lack some packages (e.g. Java). Download the larger image (Jessie with PIXEL) to get it easy.
 
 ### 2.3 Write the image
 Follow the steps in the hyper link given in 2.2.
 
-### 2.4 
+### 2.4 Update
 
 ## 3. Install tools for geo-processing
 ## 4. Publish maps
