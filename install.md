@@ -76,11 +76,11 @@ However connect to monitor and config it in GUI is much convnient (run *startx* 
 ####2.4.2 Start SSH service, stop GUI
 Start the raspi-config GUI tool in the menu, *boot to CLI* and *enable SSH*.
 
-(https://github.com/asdawn/acg/raw/master/images/config1-0-menu.PNG "raspi-config")
+![alt text](https://github.com/asdawn/acg/raw/master/images/config1-0-menu.PNG "raspi-config")
 
-(https://github.com/asdawn/acg/raw/master/images/config1-1-cli.PNG "boot to CLI")
+![alt text](https://github.com/asdawn/acg/raw/master/images/config1-1-cli.PNG "boot to CLI")
 
-(https://github.com/asdawn/acg/raw/master/images/config1-2-ssh.PNG "enable SSH")
+![alt text](https://github.com/asdawn/acg/raw/master/images/config1-2-ssh.PNG "enable SSH")
 
 **TIPS**
 
