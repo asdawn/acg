@@ -53,48 +53,61 @@ Find the network menu on the upper-right corner, right click to config IP addres
 
 **TIPS**
 
-## 3. Install tools for geo-processing
-## 4. Publish maps
-## 5. Build a small cluster
-## 6. Hadoop on PI
+<1> Run *ifconfig* in bash to see current IP address if necessary.
 
-
-
-
-
-
-
-    It is suggested to use the FULL image of rasbian, becaused the LITE version lack some necessary packages (e.g. jdk and jre).
-    It is suggested to connect monitor, keyboard and mouse properly the first time you boot from the system image.
-1. start ssh (you need a monitor at this time)
-1.1 start ssh automatically
-
-sudo raspi-config
-
-advanced options->ssh->yes
-1.2 close GUI to run quicker(optional)
-sudo raspi-config
-boot options->desktop/cli->console(or console auto-login)
-1.3 config ip address
-here 192.168.0.193 should be replaced with a valid ip you want to use
-sudo ip addr add 192.168.0.193/24 dev wlan0
-here 192.168.0.196 should be replaced with the router's ip
-sudo ip route add default via 192.168.0.196
-
-2. use ssh
+<2> You can config your network in CLI (**not suggest for beginners**).
+Set up LAN (replace IP address in the command to the IP you want to use):
 ````bash
-ssh 192.168.1.102 -l pi
+sudo ip addr add 192.168.1.111/24 dev eth0
 ````
-the default password is raspberry
 
-3. install software ready for raspberry pi(arm)
-fortunately now gdal, postgres, postgis and pgRouting can be installed using apt-get
+Set up WLAN:
+````bash
+sudo ip addr add 192.168.1.112/24 dev wlan0
+````
+
+Set up route:
+````bash
+sudo ip route add default via 192.168.1.1
+````
+
+However connect to monitor and config it in GUI is much convnient (run *startx* in bash to start GUI).
+
+####2.4.2 Start SSH service, stop GUI
+Start the raspi-config GUI tool in the menu, *boot to CLI* and *enable SSH*.
+
+(https://github.com/asdawn/acg/raw/master/images/config1-0-menu.PNG "raspi-config")
+
+(https://github.com/asdawn/acg/raw/master/images/config1-1-cli.PNG "boot to CLI")
+
+(https://github.com/asdawn/acg/raw/master/images/config1-2-ssh.PNG "enable SSH")
+
+**TIPS**
+
+<1> Why we use CLI?
+Because GUI will cost *a lot* memory, network and CPU time, and later SSH and CLI is enough for us. We have to stop it to reserve resources for database and web service. Use *startx* when necessary.
+
+<2> You can run *raspi-config* in bash to do the same thing.
+
+2.4.3 Test SSH
+The default user name is *pi*, and password is *raspberry*. You can use GUI tools or just run *ssh* to connect your PI:
+````bash
+ssh 192.168.1.112 -l pi
+````
+**TIPS**
+
+Windows 10 can run Ubuntu (CLI only) in CMD. Enable * Windows Subsystem for Linux*, then run *bash* in CMD to install. Enjoy it.
+
+## 3. Install tools for geo-processing
+*GDAL, postgresql and PostGIS* can be installed directly using apt-get now. The *screen* tool is usefull when using SSH.
+````bash
 sudo apt-get update
-sudo apt-get install postgresql postgis tomcat8 libgdal-java cmake libreadline-dev  postgresql-server-dev-9.4 libboost-graph-dev libcgal-dev screen
+sudo apt-get install postgresql postgis tomcat8 gdal-bin libgdal-java cmake libreadline-dev postgresql-server-dev-9.4 libboost-graph-dev libcgal-dev screen
+````
 
-http://docs.pgrouting.org/2.3/en/doc/src/installation/install-dependencies.html
-yes, the default java is java 8
-#here pgrouting we download from github
+The default *pgrouting* is a little out-of-date. So we download and compile the newest version. See also http://docs.pgrouting.org/2.3/en/doc/src/installation/install-dependencies.html. Some packages required are already installed in last step.
+
+````bash
 git clone git://github.com/pgRouting/pgrouting.git
 cd pgrouting
 mkdir build
@@ -102,6 +115,49 @@ cd build
 cmake -L ..
 make
 sudo make install
+````
+
+**FAQs**
+
+<1> Why can't I start psql?
+postgres has a strict access control strategy, you can run it as user *postgres* and set up a pssword.
+
+Start psql:
+
+````bash
+sudo su postgres
+psql
+````
+
+Then alter the password:
+````SQL
+ALTER USER postgres WITH PASSWORD 'postgres';
+\q
+````
+Here *\q* is the command to exit psql.
+
+Finally log out (postgres):
+````bash
+exit
+````
+
+Now you can connect to postgresql:
+````bash
+psql -U postgres -h localhost
+````
+
+## 4. Start a RESTful service
+## 5. Publish maps
+## 6. Build a small cluster
+## 7. Hadoop on PI
+
+
+
+
+
+
+
+
 
 4. change password of postgres (the default account of postgresql)
 sudo su postgres
