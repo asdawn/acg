@@ -40,12 +40,14 @@ Please read https://www.raspberrypi.org/documentation/installation/installing-im
 
 **WARNING**
 
-Rasbian JESSIE LITE is a command line image. It is much smaller, but lack some packages (e.g. Java). Download the larger image (Jessie with PIXEL) to get it easy.
+Rasbian JESSIE LITE is a command line image. It is much smaller, but lacks some important packages (e.g. Java). Download the larger image (Jessie with PIXEL) to make it easy.
 
 ### 2.3 Write the image
-Follow the steps in the hyper link given in 2.2.
+Follow the steps in the hyper-link given in 2.2.
 
-### 2.4 Update
+### 2.4 Start and config your PI
+Plugin TF card, keyboard, mouse and monitor, then connect the power,  Raspberry PI will boot to GUI.
+#### 2.4.1 Config your network
 
 ## 3. Install tools for geo-processing
 ## 4. Publish maps
