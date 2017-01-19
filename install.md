@@ -48,6 +48,10 @@ Follow the steps in the hyper-link given in 2.2.
 ### 2.4 Start and config your PI
 Plugin TF card, keyboard, mouse and monitor, then connect the power,  Raspberry PI will boot to GUI.
 #### 2.4.1 Config your network
+Find the network menu on the upper-right corner, right click to config IP addresses, left click to connect to WLAN. Later we mainly using SSH to access it, so a fixed IP address is needed.
+![alt text] (https://github.com/asdawn/acg/raw/master/images/config-0-0-net.PNG "Wireless and wired network settings")
+
+**TIPS**
 
 ## 3. Install tools for geo-processing
 ## 4. Publish maps
